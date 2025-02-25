@@ -7,6 +7,17 @@ import { HeaderControls } from '@/components/header-controls';
 import { StudentList } from '@/components/student-list';
 import { initialStudents, type Student } from '@/lib/studentData';
 
+export const meta = [
+  {
+    title: 'Class Dojo Clone',
+  },
+  {
+    name: 'description',
+    content: 'A clone of the Class Dojo app.',
+  }
+]
+
+
 export default function Home() {
   const [students, setStudents] = useState<Student[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
