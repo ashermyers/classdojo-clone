@@ -103,7 +103,7 @@ export function StudentCard({ student, setStudents }: StudentCardProps) {
       transition={{ duration: 0.25 }}
       className="p-2"
     >
-      <Card className="group hover:shadow-md transition-shadow duration-200 bg-white relative hover:scale-105 transition-transform duration-200">
+      <Card className="group hover:shadow-md transition-shadow duration-200 bg-white relative hover:scale-105 transition-transform duration-200 bg-white/80">
         <CardContent className="pt-6 flex flex-col items-center">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

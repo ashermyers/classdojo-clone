@@ -64,8 +64,8 @@ export default function Home() {
           tweenDuration={3000}
         />
       )}
-      <div className="container mx-auto px-4 py-8">
-        <Card className="w-full border-gray-100 shadow-sm">
+      <div className="container mx-auto py-8">
+        {/* <Card className="w-full border-gray-100 shadow-sm"> */}
           <HeaderControls
             students={students}
             setStudents={setStudents}
@@ -75,7 +75,7 @@ export default function Home() {
             onAddStudent={addStudent}
           />
           <StudentList students={filteredStudents} setStudents={setStudents} />
-        </Card>
+        {/* </Card> */}
       </div>
     </div>
   );

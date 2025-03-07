@@ -139,7 +139,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
 }
 
@@ -149,3 +149,5 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+html, body { background: transparent !important; }

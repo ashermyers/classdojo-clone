@@ -84,7 +84,7 @@ export function HeaderControls({
             placeholder="Search students..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-full pr-10" // increased padding to account for the indicator
+            className="w-full rounded-full pr-10 bg-white" // increased padding to account for the indicator
           />
           {/* Keybinding indicator */}
           <span className="absolute inset-y-0 right-2 flex items-center text-sm text-gray-400 pointer-events-none">
