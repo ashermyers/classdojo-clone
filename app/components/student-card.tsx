@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { DotsVerticalIcon } from '@radix-ui/react-icons';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { type Student } from '@/lib/studentData';
 
 interface StudentCardProps {
@@ -30,22 +31,28 @@ export function StudentCard({ student, setStudents }: StudentCardProps) {
   const [newScore, setNewScore] = useState<string>('');
 
   const addPoint = () => {
-    setStudents(prev => prev.map(s =>
-      s.id === student.id ? { ...s, points: s.points + 1 } : s
-    ));
+    setStudents(prev =>
+      prev.map(s =>
+        s.id === student.id ? { ...s, points: s.points + 1 } : s
+      )
+    );
   };
 
   const removePoint = () => {
-    setStudents(prev => prev.map(s =>
-      s.id === student.id && s.points > -10 ? { ...s, points: s.points - 1 } : s
-    ));
+    setStudents(prev =>
+      prev.map(s =>
+        s.id === student.id && s.points > -10 ? { ...s, points: s.points - 1 } : s
+      )
+    );
   };
 
   const setStudentScore = () => {
     const score = parseInt(newScore) || 0;
-    setStudents(prev => prev.map(s =>
-      s.id === student.id ? { ...s, points: Math.max(-10, Math.min(100, score)) } : s
-    ));
+    setStudents(prev =>
+      prev.map(s =>
+        s.id === student.id ? { ...s, points: Math.max(-10, Math.min(100, score)) } : s
+      )
+    );
     setSetScoreId(null);
     setNewScore('');
   };
@@ -55,9 +62,11 @@ export function StudentCard({ student, setStudents }: StudentCardProps) {
   };
 
   const renameStudent = () => {
-    setStudents(prev => prev.map(s =>
-      s.id === student.id ? { ...s, name: newName.trim() || s.name } : s
-    ));
+    setStudents(prev =>
+      prev.map(s =>
+        s.id === student.id ? { ...s, name: newName.trim() || s.name } : s
+      )
+    );
     setRenameId(null);
     setNewName('');
   };
@@ -94,7 +103,7 @@ export function StudentCard({ student, setStudents }: StudentCardProps) {
       transition={{ duration: 0.25 }}
       className="p-2"
     >
-      <Card className="group hover:shadow-md transition-shadow duration-200 bg-white relative">
+      <Card className="group hover:shadow-md transition-shadow duration-200 bg-white relative hover:scale-105 transition-transform duration-200">
         <CardContent className="pt-6 flex flex-col items-center">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -108,25 +117,31 @@ export function StudentCard({ student, setStudents }: StudentCardProps) {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem onClick={deleteStudent}>Delete</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => {
-                setRenameId(student.id);
-                setNewName(student.name);
-              }}>
+              <DropdownMenuItem
+                onClick={() => {
+                  setRenameId(student.id);
+                  setNewName(student.name);
+                }}
+              >
                 Rename
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => {
-                setSetScoreId(student.id);
-                setNewScore(student.points.toString());
-              }}>
+              <DropdownMenuItem
+                onClick={() => {
+                  setSetScoreId(student.id);
+                  setNewScore(student.points.toString());
+                }}
+              >
                 Set Score
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <div
-            className={`w-16 h-16 rounded-full ${getColorFromName(student.name)} flex items-center justify-center text-white text-2xl font-semibold shadow-sm`}
-          >
-            {getInitials(student.name)}
-          </div>
+          <Avatar className="w-16 h-16">
+            <AvatarImage
+              src={`https://api.dicebear.com/9.x/bottts/svg?seed=${student.name}`}
+              alt={student.name}
+            />
+            <AvatarFallback>{getInitials(student.name)}</AvatarFallback>
+          </Avatar>
           <h3 className="text-sm font-medium text-gray-700 text-center line-clamp-1 mt-2 mb-3">
             {student.name}
           </h3>

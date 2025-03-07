@@ -9,7 +9,7 @@ import { initialStudents, type Student } from '@/lib/studentData';
 
 export const meta = [
   {
-    title: 'Class Dojo Clone',
+    title: 'ClassDojo',
   },
   {
     name: 'description',
